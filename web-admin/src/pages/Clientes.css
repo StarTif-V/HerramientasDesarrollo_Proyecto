@@ -1,0 +1,171 @@
+/* Estilo general para el contenedor */
+.clientes-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 1200px;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Título principal */
+.clientes-container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Botón para agregar cliente */
+.clientes-container button {
+    display: block;
+    margin: 0 auto 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.clientes-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo de la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+    background-color: #007bff;
+    color: #fff;
+}
+
+thead th {
+    padding: 15px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+tbody td {
+    padding: 10px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+/* Botones de acción */
+button.btn-warning {
+    background-color: #ffc107;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+button.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+button.btn-danger {
+    background-color: #dc3545;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+button.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* Modal */
+.modal-content {
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    background-color: #007bff;
+    color: #fff;
+    border-bottom: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.modal-body {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.modal-footer {
+    border-top: none;
+}
+
+form .form-group label {
+    font-size: 1rem;
+    color: #333;
+}
+
+form .form-group input {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 100%;
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+form .form-group input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+form button {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #007bff;
+    border: none;
+    padding: 10px;
+    font-size: 1.1rem;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}

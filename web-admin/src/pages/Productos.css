@@ -1,0 +1,105 @@
+/* Contenedor general */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Título principal */
+.container h2 {
+    font-size: 2.5rem;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+/* Tarjetas */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen en la tarjeta */
+.card img {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Título de la tarjeta */
+.card-title {
+    font-size: 1.25rem;
+    color: #007bff;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Select (desplegable) */
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    padding: 10px;
+    margin-top: 10px;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+/* Precio */
+h5 {
+    font-size: 1.2rem;
+    color: #28a745;
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* Fila de productos */
+.row {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Columna (individual) */
+.col {
+    display: flex;
+    justify-content: center;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .container h2 {
+        font-size: 2rem;
+    }
+
+    .card img {
+        height: 150px;
+    }
+
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
+}

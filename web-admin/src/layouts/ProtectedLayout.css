@@ -1,0 +1,11 @@
+/* ProtectedLayout.css */
+.protected-layout {
+    display: flex;
+    height: 100vh; /* Asegura que ocupa toda la pantalla */
+}
+
+.main-content {
+    flex: 1; /* El contenido ocupa el espacio restante */
+    padding: 20px;
+    overflow-y: auto; /* Scroll en caso de contenido largo */
+}

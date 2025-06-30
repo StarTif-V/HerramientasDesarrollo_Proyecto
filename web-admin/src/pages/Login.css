@@ -1,0 +1,79 @@
+/* Login.css */
+
+/* Fondo general */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #900C3F, #FFC300);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Tarjeta de Login */
+.card {
+    border: none;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.card h2 {
+    color: #900C3F;
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+/* Input y botón */
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.form-control:focus {
+    border-color: #900C3F;
+    box-shadow: 0 0 5px rgba(144, 12, 63, 0.5);
+    outline: none;
+}
+
+.btn-primary {
+    background-color: #900C3F;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out, transform 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #FFC300;
+    color: #900C3F;
+    transform: scale(1.02);
+}
+
+/* Enlace de registro */
+.text-primary {
+    color: #900C3F !important;
+    font-weight: bold;
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.text-primary:hover {
+    color: #FFC300 !important;
+}
+
+/* Texto centrado */
+.text-center {
+    color: #555;
+}
+
+.text-center a {
+    text-decoration: none;
+}
