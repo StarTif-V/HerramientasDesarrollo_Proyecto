@@ -1,0 +1,29 @@
+name: CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install backend dependencies
+        run: |
+          cd backend
+          npm install
+
+      - name: Deploy to Production
+        run: |
+          echo "Desplegando a producción..."
+          # Aquí puedes agregar comandos específicos para desplegar tu aplicación,
+          # como usar un CLI de tu proveedor de nube o ejecutar un script de despliegue.
