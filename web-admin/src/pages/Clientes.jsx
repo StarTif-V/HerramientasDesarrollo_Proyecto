@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { Table, Button, Form, Modal } from 'react-bootstrap';
-import { getClientes, createCliente, updateCliente, deleteCliente } from '../api'; // Importando las funciones de api.js
+import React, { useEffect, useState, useCallback } from 'react';
+import { Table, Button, Form, Modal, Alert, Spinner } from 'react-bootstrap';
+import { getClientes, createCliente, updateCliente, deleteCliente } from '../api';
 import './Clientes.css';
 
 const Clientes = () => {
@@ -8,63 +8,72 @@ const Clientes = () => {
     const [formData, setFormData] = useState({ nombre: '', correo: '', telefono: '', direccion: '' });
     const [showModal, setShowModal] = useState(false);
     const [editingCliente, setEditingCliente] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
 
-    // Cargar clientes al montar
-    useEffect(() => {
-        cargarClientes();
+    const cargarClientes = useCallback(async () => {
+        setLoading(true);
+        try {
+            const data = await getClientes();
+            setClientes(data);
+            setError('');
+        } catch (error) {
+            setError('Error al cargar los clientes. Intenta de nuevo más tarde.');
+            console.error(error);
+        } finally {
+            setLoading(false);
+        }
     }, []);
 
-    // Obtener los clientes desde la API
-    const cargarClientes = async () => {
-        try {
-            const data = await getClientes(); // Usando la función de api.js
-            setClientes(data);
-        } catch (error) {
-            console.error('Error al cargar los clientes:', error);
-        }
-    };
+    useEffect(() => {
+        cargarClientes();
+    }, [cargarClientes]);
 
-    // Manejar cambios en los campos del formulario
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
-    // Manejar el envío del formulario para crear o editar cliente
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Datos enviados:', formData); // Asegúrate de que estos datos sean correctos
+        setLoading(true);
+        setError('');
 
         try {
             if (editingCliente) {
-                await updateCliente(editingCliente._id, formData); // Actualizar cliente
+                await updateCliente(editingCliente._id, formData);
             } else {
-                await createCliente(formData); // Crear cliente
+                await createCliente(formData);
             }
             cargarClientes();
             setShowModal(false);
             setFormData({ nombre: '', correo: '', telefono: '', direccion: '' });
             setEditingCliente(null);
         } catch (error) {
-            console.error('Error al guardar el cliente:', error);
+            setError('Error al guardar el cliente. Verifica los datos e intenta de nuevo.');
+            console.error(error);
+        } finally {
+            setLoading(false);
         }
     };
 
-    // Manejar la edición de un cliente
     const handleEdit = (cliente) => {
         setEditingCliente(cliente);
         setFormData(cliente);
         setShowModal(true);
     };
 
-    // Manejar la eliminación de un cliente
     const handleDelete = async (id) => {
         if (window.confirm('¿Estás seguro de que deseas eliminar este cliente?')) {
+            setLoading(true);
             try {
-                await deleteCliente(id); // Usando la función de api.js
-                cargarClientes(); // Refrescar la lista de clientes
+                await deleteCliente(id);
+                cargarClientes();
             } catch (error) {
-                console.error('Error al eliminar el cliente:', error);
+                setError('Error al eliminar el cliente. Intenta de nuevo más tarde.');
+                console.error(error);
+            } finally {
+                setLoading(false);
             }
         }
     };
@@ -75,6 +84,7 @@ const Clientes = () => {
             <Button variant="primary" onClick={() => setShowModal(true)}>
                 Agregar Cliente
             </Button>
+            {error && <Alert variant="danger">{error}</Alert>}
             <Table striped bordered hover className="mt-4">
                 <thead>
                     <tr>
@@ -152,8 +162,8 @@ const Clientes = () => {
                                 required
                             />
                         </Form.Group>
-                        <Button variant="primary" type="submit">
-                            {editingCliente ? 'Actualizar' : 'Guardar'}
+                        <Button variant="primary" type="submit" disabled={loading}>
+                            {loading ? <Spinner animation="border" size="sm" /> : (editingCliente ? 'Actualizar' : 'Guardar')}
                         </Button>
                     </Form>
                 </Modal.Body>
